@@ -1,4 +1,11 @@
-import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  Button,
+} from 'react-native';
 import React, {useCallback} from 'react';
 import {storeData} from '../data';
 
@@ -21,7 +28,10 @@ function HomeScreen({navigation}: {navigation: any}) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>가게를 선택해주세요.</Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>가게를 선택해주세요.</Text>
+        <Button title="프로필" onPress={() => navigation.navigate('Profile')} />
+      </View>
       <FlatList
         data={storeData}
         renderItem={renderItem}
@@ -42,11 +52,17 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     gap: 15,
   },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
   title: {
     fontSize: 25,
     fontWeight: 'bold',
-    alignItems: 'flex-start',
-    width: '100%',
+    alignItems: 'center',
+    flex: 1,
   },
   buttonContainer: {
     backgroundColor: 'skyblue',
